@@ -1,1 +1,7 @@
 FROM pihole/pihole:latest
+
+EXPOSE 80
+EXPOSE 443
+EXPOSE 53/tcp
+EXPOSE 53/udp
+EXPOSE 123/udp
