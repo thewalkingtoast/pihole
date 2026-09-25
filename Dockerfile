@@ -1,7 +1,8 @@
-FROM pihole/pihole:latest
+FROM pihole/pihole:2026.09.0
 
-EXPOSE 80
-EXPOSE 443
-EXPOSE 53/tcp
-EXPOSE 53/udp
-EXPOSE 123/udp
+EXPOSE 53/tcp 53/udp 80/tcp 443/tcp
+
+COPY --from=pihole/pihole:2026.09.0 /usr/bin/pihole-FTL /usr/bin/pihole-FTL
+COPY --from=pihole/pihole:2026.09.0 /etc/pihole /etc/pihole
+
+ENTRYPOINT ["/usr/bin/pihole-FTL", "no-daemon"]
